@@ -11,9 +11,7 @@ readFilePromise(file)
   .then(data => console.log('Promise', data.toString().trim()))
   .catch(err => { throw err; });
 
-//   reader.readerWithPromise(file)
-//   .then(data => console.log('Promise from module', data))
-//   .catch(err => { throw err; });
+
 
 class Model {
 
