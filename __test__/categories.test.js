@@ -34,6 +34,40 @@ describe('Categories Model', () => {
       });
   });
   
+ 
+  it('can update() a new category', () => {
+
+    let obj = { name: 'Test Category' };
+    let obj2={ name: 'Test Category updated' };
+    categories.create(obj)
+      .then(record => {
+        let id=record.id;
+        return id;
+      }).then((id)=>{
+        return categories.update(id, obj2)
+      }).then((result)=>{
+        expect(result.name).toEqual(obj2.name)
+
+      })
+      .catch(e => console.error('ERR', e));
+  });
+
+  it('can delete() a category', () => {
+
+    let obj = { name: 'Test Category' };
+    
+    categories.create(obj)
+      .then(record => {
+        let id=record.id;
+        return id;
+      }).then((id)=>{
+        return categories.delete(id)
+      }).then((result)=>{
+        expect(result).toBeUndefined()
+        
+      })
+      .catch(e => console.error('ERR', e));
+  });
 
 });
 

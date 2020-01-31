@@ -7,9 +7,6 @@ const util = require('util')
 let file = `${__dirname}/data/categories.db`;
 
 let readFilePromise = util.promisify(fs.readFile)
-readFilePromise(file)
-  .then(data => console.log('Promise', data.toString().trim()))
-  .catch(err => { throw err; });
 
 
 
@@ -20,8 +17,14 @@ class Model {
   }
 
   get(id) {
-    let response = id ? this.database.filter((record) => record.id === id) : this.database;
-    return Promise.resolve(response);
+    readFilePromise(file)
+    .then(data => {
+      // console.log('Promise data', data.toString().trim())
+      let product= JSON.parse(data.toString().trim());
+      console.log('product : ', product);
+      return product;
+    })
+    .catch(err => { throw err; });
   }
 
   create(record) {
@@ -41,5 +44,9 @@ class Model {
   }
 
 }
+ 
+let a=new Model;
 
+// console.log('a.get() : ', a.get());
+// a.get().then(thing=>console.log('thing : ', thing))
 module.exports = Model;

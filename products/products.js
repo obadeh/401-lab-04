@@ -1,6 +1,6 @@
 'use strict';
 
-const DataModel = require('../memory-data-model.js');
+const DataModel = require('../file-data-model.js');
 
 class Products extends DataModel {
   constructor() {
@@ -15,4 +15,20 @@ class Products extends DataModel {
   }
 }
 
+let products=new Products
+
+//   let obj ={name: 'hello'}
+// let a=products.create(obj)
+// console.log('a : ', a);
+
+// let obj = { name: 'Test Product' };
+// products.create(obj)
+//   .then(record => {
+//     console.log('record : ', record);
+//     })
+  
+
+
 module.exports = Products;
+
+
